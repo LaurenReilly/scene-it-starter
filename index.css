@@ -1,16 +1,24 @@
 body {
-	background-color: #B2E9FD;
+	background-color: #2e2e2e;
+	font-size: 1em;
 }
 
-.header h2 {
-	color: #DC4247;
+.header h1 {
+	color: #ff6600;
+	font-family: 'Lobster', cursive;
+	text-shadow: 3px 3px #FFF;
+	font-size: 8em;
 }
 
-.header p {
-	color: #50524F;
+.header h4, button {
+	color: #FFF;
+	font-family: 'Fjalla One', sans-serif;
 }
 
 .results {
 	margin-top: 20px;
 }
 
+input {
+	font-family: 'Fjalla One', sans-serif;
+}
