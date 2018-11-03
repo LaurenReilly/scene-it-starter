@@ -28,3 +28,7 @@ body {
 input {
 	font-family: 'Fjalla One', sans-serif;
 }
+
+button:active {
+	color: red;
+}

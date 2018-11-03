@@ -1,5 +1,4 @@
 var movieContainer = document.getElementById("movieContainer");
-var movieSearch = document.getElementById("movieSearch");
 
 // document.addEventListener("DOMContentLoaded", function() {
 // });
@@ -22,15 +21,11 @@ function renderMovies(array) {
 
 document.getElementById("search-form").addEventListener("submit", function(e) {
     e.preventDefault();
-    var movieQuery = movieSearch.value.toLowerCase();
-    var filteredMovies = movieData.filter(function(movie) {
-        if (movie.Title.toLowerCase().indexOf(movieQuery) > -1) {
-            return movie;
-        } else if(movie.Year.toLowerCase().indexOf(movieQuery) > -1) {
-            return movie;
-        }
+    var movieSearch = document.getElementById("movieSearch").value;
+    var encodedSearch = encodeURIComponent(movieSearch);
+    axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + encodedSearch).then(function(response) {
+        renderMovies(response.data.Search);
     });
-    renderMovies(filteredMovies);
 });
 
 //onclick of add to watchlist button will save data to watchlist.
