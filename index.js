@@ -1,19 +1,18 @@
 var movieContainer = document.getElementById("movieContainer");
 var movieSearch = document.getElementById("movieSearch");
 
-document.addEventListener("DOMContentLoaded", function() {
-    saveToWatchlist(imdbID);
-});
+// document.addEventListener("DOMContentLoaded", function() {
+// });
 
 function renderMovies(array) {
     var movies = array.map(function(movie){
         return `
-            <div class="card my-2" style="width: 20rem; height: auto;">
+            <div class="card my-2" style="width: 20rem; height: auto">
                 <img class="card-img-top" src="${movie.Poster}" alt="Movie Poster">
                 <div class="card-body">
                     <h5 class="card-title">${movie.Title}</h5>
                     <p class="card-text">${movie.Year}</p>
-                    <button onclick="saveToWatchlist(${movie.imdbID})" class="btn btn-success">Add to List</button>
+                    <button onclick="saveToWatchlist('${movie.imdbID}')" class="btn btn-success">Add to List</button>
                 </div>
             </div>
         `
@@ -34,6 +33,7 @@ document.getElementById("search-form").addEventListener("submit", function(e) {
     renderMovies(filteredMovies);
 });
 
+//onclick of add to watchlist button will save data to watchlist.
 function saveToWatchlist(imdbID) {
     var movie = movieData.find(function(currentMovie) {
         return currentMovie.imdbID == imdbID;
@@ -45,5 +45,5 @@ function saveToWatchlist(imdbID) {
     }
     watchList.push(movie);
     watchListJSON = JSON.stringify(watchList);
-    localStorage.setItem("watchlist", watchlistJSON);
+    localStorage.setItem("watchlist", watchListJSON);
 }
