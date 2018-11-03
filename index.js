@@ -1,5 +1,7 @@
 var movieContainer = document.getElementById("movieContainer");
 
+var movies;
+
 // document.addEventListener("DOMContentLoaded", function() {
 // });
 
@@ -25,12 +27,13 @@ document.getElementById("search-form").addEventListener("submit", function(e) {
     var encodedSearch = encodeURIComponent(movieSearch);
     axios.get("http://www.omdbapi.com/?apikey=3430a78&s=" + encodedSearch).then(function(response) {
         renderMovies(response.data.Search);
+        movies = response.data.Search;
     });
 });
 
 //onclick of add to watchlist button will save data to watchlist.
 function saveToWatchlist(imdbID) {
-    var movie = movieData.find(function(currentMovie) {
+    movie = movies.find(function(currentMovie) {
         return currentMovie.imdbID == imdbID;
     });
     var watchListJSON = localStorage.getItem("watchlist");

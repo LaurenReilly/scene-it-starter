@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
     var movies = JSON.parse(localStorage.getItem("watchlist"));
-    console.log(movies);
     var watchList = movies.map(function(movie) {
         return `
             <div class="card my-2" style="width: 20rem; height: auto;">
