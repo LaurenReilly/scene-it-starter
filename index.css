@@ -1,6 +1,12 @@
+html {
+	background-color: #2e2e2e;
+	min-height: 100%;
+}
+
 body {
 	background-color: #2e2e2e;
 	font-size: 1em;
+	min-height: 100vh;
 }
 
 .header h1 {
@@ -10,7 +16,7 @@ body {
 	font-size: 8em;
 }
 
-.header h4, button {
+.header h4, button, a, a:link, a:visited, a:hover {
 	color: #FFF;
 	font-family: 'Fjalla One', sans-serif;
 }

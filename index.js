@@ -1,9 +1,9 @@
 var movieContainer = document.getElementById("movieContainer");
 var movieSearch = document.getElementById("movieSearch");
 
-// document.addEventListener("DOMContentLoaded", function() {
-//     renderMovies(movieData);
-// });
+document.addEventListener("DOMContentLoaded", function() {
+    saveToWatchlist(imdbID);
+});
 
 function renderMovies(array) {
     var movies = array.map(function(movie){
@@ -13,7 +13,7 @@ function renderMovies(array) {
                 <div class="card-body">
                     <h5 class="card-title">${movie.Title}</h5>
                     <p class="card-text">${movie.Year}</p>
-                    <a href="#" class="btn btn-success">Add to List</a>
+                    <button onclick="saveToWatchlist(${movie.imdbID})" class="btn btn-success">Add to List</button>
                 </div>
             </div>
         `
@@ -33,3 +33,17 @@ document.getElementById("search-form").addEventListener("submit", function(e) {
     });
     renderMovies(filteredMovies);
 });
+
+function saveToWatchlist(imdbID) {
+    var movie = movieData.find(function(currentMovie) {
+        return currentMovie.imdbID == imdbID;
+    });
+    var watchListJSON = localStorage.getItem("watchlist");
+    var watchList = JSON.parse(watchListJSON);
+    if (watchList === null) {
+        watchList = [];
+    }
+    watchList.push(movie);
+    watchListJSON = JSON.stringify(watchList);
+    localStorage.setItem("watchlist", watchlistJSON);
+}
